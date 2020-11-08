@@ -70,6 +70,7 @@ header {
   border: solid 1px #c4c4c4;
   background-color: #c4c4c4;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .Rectangle {
@@ -118,6 +119,7 @@ header {
   background-color: #ffffff;
   margin-right: 10px;
   margin-bottom: 1px;
+  cursor: pointer;
 }
 
 .MatchesBG {

@@ -22,11 +22,12 @@ header {
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 2rem;
 }
 
 .SWStarter {
-  width: 98px;
+  width: 300px;
   height: 22px;
   font-family: Montserrat;
   font-size: 18px;

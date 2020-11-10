@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
-import rootReducer from './Slice/slice';
+import Slice from './Slice/slice';
 
-const store = configureStore({
-  reducer: rootReducer,
+export const store = configureStore({
+  reducer: Slice.reducer,
 });
 
 export type AppDispatch = typeof store.dispatch;

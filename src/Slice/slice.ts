@@ -1,36 +1,53 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { Movie, People } from './types';
-import StarWarsApi from '../util';
+import fetchMovies from './moviesThunk';
+import fetchPeople from './peopleThunk';
 
 interface State {
   moviesList: Movie[];
   peopleList: People[];
+  filterList: Movie[] | People[];
 }
 
-const fetchMovies = createAsyncThunk('starWars/fetchMovies', async () => {
-  return await StarWarsApi.getMovies();
-});
-
-const fetchPeople = createAsyncThunk('starWars/fetchPeople', async () => {
-  return await StarWarsApi.getPeople();
-});
+interface filteredPayload {
+  name: 'MOVIE' | 'PEOPLE';
+  value: string;
+}
 
 const initialState: State = {
   moviesList: [],
   peopleList: [],
+  filterList: [],
 };
 
 const slice = createSlice({
   name: 'starWars',
   initialState: initialState,
   reducers: {
-    getMovies: (state) => {
+    filterResult: (state, { payload }: { payload: filteredPayload }) => {
+      let filteredList: Movie[] | People[] = [];
+      if (payload.name === 'MOVIE') {
+        filteredList = state.moviesList.filter((movie) => {
+          return movie.title
+            .toLowerCase()
+            .includes(payload.value.toLowerCase());
+        });
+      } else {
+        filteredList = state.peopleList.filter((people) => {
+          return people.name
+            .toLowerCase()
+            .includes(payload.value.toLowerCase());
+        });
+      }
+
+      state.filterList = filteredList;
       return state;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMovies.fulfilled, (state, action) => {
+        console.log(action);
         state.moviesList = action.payload;
         return state;
       })
@@ -41,4 +58,4 @@ const slice = createSlice({
   },
 });
 
-export default slice.reducer;
+export default slice;

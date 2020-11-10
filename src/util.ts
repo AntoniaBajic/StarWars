@@ -43,7 +43,6 @@ const StartWarsApi = {
       }
     } catch (err) {
       console.log('Error getting movies');
-      return [];
     }
     return [];
   },
@@ -56,7 +55,6 @@ const StartWarsApi = {
       }
     } catch (err) {
       console.log('Error getting people');
-      return [];
     }
     return [];
   },

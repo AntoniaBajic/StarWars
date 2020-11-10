@@ -53,6 +53,7 @@ const slice = createSlice({
       })
       .addCase(fetchPeople.fulfilled, (state, action) => {
         state.peopleList = action.payload;
+        state.filterList = action.payload;
         return state;
       });
   },

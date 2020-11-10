@@ -3,10 +3,11 @@ import { Movie, People } from './types';
 import fetchMovies from './moviesThunk';
 import fetchPeople from './peopleThunk';
 
-interface State {
+export interface State {
   moviesList: Movie[];
   peopleList: People[];
   filterList: Movie[] | People[];
+  filterType: 'MOVIE' | 'PEOPLE';
 }
 
 interface filteredPayload {
@@ -18,6 +19,7 @@ const initialState: State = {
   moviesList: [],
   peopleList: [],
   filterList: [],
+  filterType: 'PEOPLE',
 };
 
 const slice = createSlice({
@@ -32,12 +34,14 @@ const slice = createSlice({
             .toLowerCase()
             .includes(payload.value.toLowerCase());
         });
+        state.filterType = 'MOVIE';
       } else {
         filteredList = state.peopleList.filter((people) => {
           return people.name
             .toLowerCase()
             .includes(payload.value.toLowerCase());
         });
+        state.filterType = 'PEOPLE';
       }
 
       state.filterList = filteredList;

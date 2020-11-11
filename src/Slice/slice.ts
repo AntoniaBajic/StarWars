@@ -63,6 +63,14 @@ const slice = createSlice({
       state.filterList = filteredList;
       return state;
     },
+    showMore: (state) => {
+      if (state.shownCount + 5 > state.totalCount) {
+        state.shownCount = state.totalCount;
+      } else {
+        state.shownCount += 5;
+      }
+      return state;
+    },
   },
   extraReducers: (builder) => {
     builder

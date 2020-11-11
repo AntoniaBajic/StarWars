@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../store';
-import Slice from '../../Slice/slice';
+import Slice, { State } from '../../Slice/slice';
+import { useSelector } from 'react-redux';
 
 const { actions } = Slice;
 const Search: React.FC = () => {
+  const [isSearching, setIsSearching] = useState(false);
   const [type, setType] = useState('PEOPLE');
   const [inputValue, setInputValue] = useState('');
+  const { totalCount, shownCount } = useSelector((state: State) => state);
+
+  const searchHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    await setIsSearching(true);
+    setTimeout(async () => {
+      if (type === 'PEOPLE') {
+        dispatch(
+          actions.filterResult({
+            name: 'PEOPLE',
+            value: inputValue,
+          })
+        );
+      } else {
+        dispatch(
+          actions.filterResult({
+            name: 'MOVIE',
+            value: inputValue,
+          })
+        );
+      }
+      await setIsSearching(false);
+    }, 2000);
+  };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (type === 'PEOPLE') {
-      dispatch(
-        actions.filterResult({
-          name: 'PEOPLE',
-          value: event.target.value,
-        })
-      );
-    } else {
-      dispatch(
-        actions.filterResult({
-          name: 'MOVIE',
-          value: event.target.value,
-        })
-      );
-    }
     setInputValue(event.target.value);
   };
   const dispatch = useAppDispatch();
@@ -51,51 +61,34 @@ const Search: React.FC = () => {
   return (
     <div className='SearchContainer'>
       <form className='form'>
-        {/* <p className='What-are-you-searching-for'>
-          What are you searching for?
-        </p> */}
-        {/* <div className='ellipses'>
-          <span className='ellipses'>
-            <input
-              className='Ellipse'
-              type='radio'
-              name='type'
-              value='People'
-              checked
-            />
-            <span className='People'> People</span>
-          </span>
-          <span className='ellipses'>
-            <input
-              className='Ellipse'
-              type='radio'
-              name='type'
-              value='People'
-            /> 
-
-            <span className='Movies'> Movies</span>
-          </span>
-        </div>*/}
-
-        <label>Showing 5 results of 10: </label>
+        <label className='Showing-results-of'>
+          Showing {shownCount} results of {totalCount}:{' '}
+        </label>
         <select name='starwars' id='starwars' onChange={handleType}>
-          <option value='PEOPLE'>People</option>
-          <option value='MOVIE'>Movies</option>
+          <option value='PEOPLE' className='People'>
+            People
+          </option>
+          <option value='MOVIE' className='Movies'>
+            Movies
+          </option>
         </select>
       </form>
-      <form className='form'>
-        <input
-          className='Rectangle'
-          placeholder='e.g. Chewbacca, Yoda, Boba Fett'
-          value={inputValue}
-          onChange={handleInputChange}
-        ></input>
-      </form>
-      <form className='form'>
-        <button className='SearchButton-Disabled'>
-          <span className='SEARCH'>SEARCH</span>
-        </button>
-      </form>
+
+      <input
+        className='Rectangle'
+        placeholder='e.g. Chewbacca, Yoda, Boba Fett'
+        value={inputValue}
+        onChange={handleInputChange}
+      ></input>
+
+      <button
+        className='SearchButton-Disabled'
+        onClick={searchHandler}
+        disabled={isSearching}
+        style={isSearching ? { background: '#0ab463' } : {}}
+      >
+        <span className='SEARCH'>{isSearching ? 'SEARCHING' : 'SEARCH'}</span>
+      </button>
     </div>
   );
 };

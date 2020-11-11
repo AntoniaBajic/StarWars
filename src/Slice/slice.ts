@@ -8,6 +8,8 @@ export interface State {
   peopleList: People[];
   filterList: Movie[] | People[];
   filterType: 'MOVIE' | 'PEOPLE';
+  totalCount: number;
+  shownCount: number;
 }
 
 interface filteredPayload {
@@ -20,6 +22,8 @@ const initialState: State = {
   peopleList: [],
   filterList: [],
   filterType: 'PEOPLE',
+  totalCount: 0,
+  shownCount: 0,
 };
 
 const slice = createSlice({
@@ -34,6 +38,12 @@ const slice = createSlice({
             .toLowerCase()
             .includes(payload.value.toLowerCase());
         });
+        if (filteredList.length >= 5) {
+          state.totalCount = filteredList.length;
+          state.shownCount = 5;
+        } else {
+          state.totalCount = state.shownCount = filteredList.length;
+        }
         state.filterType = 'MOVIE';
       } else {
         filteredList = state.peopleList.filter((people) => {
@@ -41,6 +51,12 @@ const slice = createSlice({
             .toLowerCase()
             .includes(payload.value.toLowerCase());
         });
+        if (filteredList.length >= 5) {
+          state.totalCount = filteredList.length;
+          state.shownCount = 5;
+        } else {
+          state.totalCount = state.shownCount = filteredList.length;
+        }
         state.filterType = 'PEOPLE';
       }
 
@@ -58,6 +74,8 @@ const slice = createSlice({
       .addCase(fetchPeople.fulfilled, (state, action) => {
         state.peopleList = action.payload;
         state.filterList = action.payload;
+        state.shownCount = 5;
+        state.totalCount = action.payload.length;
         return state;
       });
   },

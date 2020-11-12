@@ -27,7 +27,7 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path='/' component={SearchList} />
           <Route exact path='/people/:name' component={People} />
-          <Route exact path='/movies' component={Movies} />
+          <Route exact path='/movies/:title' component={Movies} />
         </Switch>
       </Fragment>
     </Router>

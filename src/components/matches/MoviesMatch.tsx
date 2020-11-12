@@ -7,7 +7,7 @@ interface Props {
 const MoviesMatch: React.FC<Props> = ({ title }) => {
   return (
     <div className='MatchesBG'>
-      <Link to='/films'>{title}</Link>
+      <Link to={`/movies/${title}`}>{title}</Link>
     </div>
   );
 };

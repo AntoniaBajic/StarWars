@@ -7,7 +7,7 @@ interface Props {
 const PeopleMatch: React.FC<Props> = ({ name }) => {
   return (
     <div className='MatchesBG'>
-      <Link to='/people' className='button '>
+      <Link to={`/people/${name}`} className='button '>
         {name}
       </Link>
     </div>

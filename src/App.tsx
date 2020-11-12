@@ -26,7 +26,7 @@ const App: React.FC = () => {
         <Header />
         <Switch>
           <Route exact path='/' component={SearchList} />
-          <Route exact path='/people' component={People} />
+          <Route exact path='/people/:name' component={People} />
           <Route exact path='/movies' component={Movies} />
         </Switch>
       </Fragment>

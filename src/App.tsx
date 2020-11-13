@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import SearchList from './components/layout/SearchList';
 import People from './components/AboutPeople/People';
 import Movies from './components/AboutMovies/Movies';
+import MovieDetail from './components/AboutMovies/MovieDetail';
 import fetchMovies from './Slice/moviesThunk';
 import fetchPeople from './Slice/peopleThunk';
 import { useAppDispatch } from './store';
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route exact path='/' component={SearchList} />
           <Route exact path='/people/:name' component={People} />
           <Route exact path='/movies/:title' component={Movies} />
+          <Route exact path='/movieDetail/:id' component={MovieDetail} />
         </Switch>
       </Fragment>
     </Router>

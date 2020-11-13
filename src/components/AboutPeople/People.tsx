@@ -20,9 +20,12 @@ const People: React.FC = () => {
         <div>Birth year: {peopleData.birth_year}</div>
         <div>Movies:</div>
         {peopleData.films.map((film, index) => {
+          const id = film.match(/\d+/);
           return (
             <div key={film}>
-              <Link to={''}>{index + 1}. Movie</Link>
+              <Link to={`/movieDetail/${(id as RegExpMatchArray)[0]}`}>
+                {index + 1}. Movie
+              </Link>
             </div>
           );
         })}

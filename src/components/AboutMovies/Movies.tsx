@@ -8,14 +8,17 @@ const Movies: React.FC = () => {
   const { moviesList } = useSelector((state: State) => state);
   const movieData = moviesList.filter((movie) => movie.title === title)[0];
   return (
-    <div className='movies'>
-      About Movie
+    <div className='About'>
       <div className='MatchesBG'>
-        <div>Opening crawl: {movieData.opening_crawl}</div>
-        <div>Title: {movieData.title}</div>
+        <div>
+          Opening crawl:<span className='data'> {movieData.opening_crawl}</span>
+        </div>
+        <div className='movieTitle'>
+          Title: <span className='data'> {movieData.title}</span>
+        </div>
       </div>
-      <Link to='/' className='button'>
-        BACK TO SEARCH
+      <Link to='/' className='SearchBackButton'>
+        <span className='SEARCH-BACK'>BACK TO SEARCH</span>
       </Link>
     </div>
   );

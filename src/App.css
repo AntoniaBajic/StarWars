@@ -6,8 +6,10 @@
 body {
   margin: 0;
   font-family: Montserrat;
-  width: 1440px;
-  height: 900px;
+  /* width: 1440px; */
+  /* width: 100%; */
+  /* height: 900px; */
+  /* overflow-x: hidden; */
   background-color: #ededed;
 }
 
@@ -16,7 +18,7 @@ html {
 }
 
 header {
-  width: 1440px;
+  width: 100%;
   height: 50px;
   box-shadow: 0 2px 0 0 var(--gainsboro);
   background-color: #ffffff;
@@ -41,7 +43,7 @@ header {
 
 .SearchContainer {
   width: 410px;
-  height: 230px;
+  height: 180px;
   border-radius: 4px;
   box-shadow: 0 1px 2px 0 var(--darkgray);
   border: solid 1px var(--gainsboro);
@@ -49,9 +51,15 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-left: 208px;
+  /* margin-left: 208px; */
+  padding-left: 3rem;
 }
-
+.Search {
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .Showing-results-of {
   width: 205px;
   height: 18px;
@@ -63,6 +71,7 @@ header {
   line-height: normal;
   letter-spacing: normal;
   color: #383838;
+  margin-bottom: 1.2rem;
 }
 .SearchButton-Disabled {
   width: 350px;
@@ -70,8 +79,39 @@ header {
   border-radius: 20px;
   border: solid 1px #c4c4c4;
   background-color: #c4c4c4;
+  cursor: pointer;
+}
+.SearchButton-Disabled:hover {
+  background-color: #0ab463;
+}
+.LoadMoreButton {
+  display: flex;
+  justify-content: center;
+}
+
+.LoadMore {
+  width: 80%;
+  height: 34px;
+  border-radius: 20px;
+  border: solid 1px #c4c4c4;
+  background-color: #c4c4c4;
   margin-bottom: 20px;
   cursor: pointer;
+}
+.LoadMore:hover {
+  background-color: #0ab463;
+}
+.LOADMORE {
+  width: 61px;
+  height: 18px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
 }
 
 .Rectangle {
@@ -84,8 +124,13 @@ header {
 }
 
 .form {
-  padding-left: 30px;
+  font-family: 'Montserrat';
+  padding: 2rem;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 }
+
 .Movies {
   width: 52px;
   height: 18px;
@@ -124,15 +169,99 @@ header {
 }
 
 .MatchesBG {
-  width: 582px;
-  height: 582px;
+  width: 500px;
+  /* height: 360px; */
+  border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px 0 var(--darkgray);
+  border: solid 1px var(--gainsboro);
+  background-color: #ffffff;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+.movieTitle {
+  text-align: center;
+}
+.MatchesSM {
+  width: 200px;
+  height: 200px;
   border-radius: 4px;
   box-shadow: 0 1px 2px 0 var(--darkgray);
   border: solid 1px var(--gainsboro);
   background-color: #ffffff;
-  margin-right: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.AboutPeople {
+  width: 400px;
+  height: 180px;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px 0 var(--darkgray);
+  border: solid 1px var(--gainsboro);
+  background-color: #ffffff;
+  padding-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4rem;
+  justify-content: center;
+  display: flex;
+}
+.button {
+  font-family: Montserrat;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #383838;
+  margin-bottom: 2rem;
 }
 
+.buttonMovies {
+  font-family: Montserrat;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #383838;
+  margin-bottom: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0ab463;
+}
+.MatchesList {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  justify-content: space-between;
+}
+.MatchesLists {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding-left: 2rem;
+}
 .Results {
   width: 71px;
   height: 22px;
@@ -149,31 +278,9 @@ header {
   display: grid;
 }
 
-.divider {
-  width: 522px;
-  height: 1px;
-  background-color: #c4c4c4;
-  margin-left: 30px;
-  margin-top: 10px;
-}
-.There-are-zero-matches-Use-the-form-to-search-for {
-  width: 324px;
-  height: 35px;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #c4c4c4;
-  padding-left: 129px;
-  padding-top: 211px;
-  text-align: center;
-}
 .SearchListArea {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 30px;
   padding: 30px;
 }
@@ -211,13 +318,69 @@ header {
   line-height: normal;
   letter-spacing: normal;
   color: #c4c4c4;
+  padding-left: 2rem;
+}
+/* about pages */
+.About {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.SearchBackButton {
+  width: 350px;
+  height: 34px;
+  border-radius: 20px;
+  border: solid 1px #c4c4c4;
+  background-color: #c4c4c4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.SEARCH-BACK {
+  height: 18px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+.SearchBackButton:hover {
+  background-color: #0ab463;
+}
+.data {
+  width: 205px;
+  height: 18px;
+  font-family: Montserrat;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #383838;
 }
 @media (max-width: 700px) {
-  .header {
-    width: 700px;
-  }
   .SearchListArea {
     grid-template-columns: 1fr;
+  }
+  .Search {
+    align-items: flex-start;
+    padding-left: 2rem;
   }
   .SearchContainer {
     margin-left: 0;
@@ -225,4 +388,60 @@ header {
   body {
     overflow-x: hidden;
   }
+  .MatchesList {
+    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .MatchesLists {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .MatchesBG {
+    grid-template-columns: 1fr;
+  }
+  .LoadMoreButton {
+    justify-content: flex-start;
+  }
+
+  .About {
+    align-items: start;
+    padding-left: 2rem;
+  }
+  .movieTitle {
+    text-align: start;
+  }
+}
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  /* some CSS here */
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  /* some CSS here */
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px) {
+  /* some CSS here */
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* some CSS here */
+}
+
+/* #### iPhone 5 Portrait or Landscape #### */
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* some CSS here */
+}
+
+/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* some CSS here */
 }

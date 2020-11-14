@@ -6,8 +6,10 @@ interface Props {
 }
 const MoviesMatch: React.FC<Props> = ({ title }) => {
   return (
-    <div className='MatchesBG'>
-      <Link to={`/movies/${title}`}>{title}</Link>
+    <div className='MatchesSM'>
+      <Link to={`/movies/${title}`} className='button '>
+        {title}
+      </Link>
     </div>
   );
 };

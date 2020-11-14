@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useAppDispatch } from '../../store';
 import Slice, { State } from '../../Slice/slice';
 import { useSelector } from 'react-redux';
@@ -59,37 +59,44 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className='SearchContainer'>
+    <Fragment>
+      <div className='Search'>
+        <div className='SearchContainer'>
+          <input
+            className='Rectangle'
+            placeholder='Search Character'
+            value={inputValue}
+            onChange={handleInputChange}
+          ></input>
+
+          <button
+            className='SearchButton-Disabled'
+            onClick={searchHandler}
+            disabled={isSearching}
+            style={isSearching ? { background: '#0ab463' } : {}}
+          >
+            <span className='SEARCH'>
+              {isSearching ? 'SEARCHING' : 'SEARCH CHARACTER'}
+            </span>
+          </button>
+        </div>
+      </div>
       <form className='form'>
         <label className='Showing-results-of'>
           Showing {shownCount} results of {totalCount}:{' '}
         </label>
-        <select name='starwars' id='starwars' onChange={handleType}>
-          <option value='PEOPLE' className='People'>
-            People
-          </option>
-          <option value='MOVIE' className='Movies'>
-            Movies
-          </option>
-        </select>
+        <div>
+          <select name='starwars' id='starwars' onChange={handleType}>
+            <option value='PEOPLE' className='People'>
+              People
+            </option>
+            <option value='MOVIE' className='Movies'>
+              Movies
+            </option>
+          </select>
+        </div>
       </form>
-
-      <input
-        className='Rectangle'
-        placeholder='e.g. Chewbacca, Yoda, Boba Fett'
-        value={inputValue}
-        onChange={handleInputChange}
-      ></input>
-
-      <button
-        className='SearchButton-Disabled'
-        onClick={searchHandler}
-        disabled={isSearching}
-        style={isSearching ? { background: '#0ab463' } : {}}
-      >
-        <span className='SEARCH'>{isSearching ? 'SEARCHING' : 'SEARCH'}</span>
-      </button>
-    </div>
+    </Fragment>
   );
 };
 export default Search;

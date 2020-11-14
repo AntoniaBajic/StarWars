@@ -21,23 +21,43 @@ const Matches: React.FC = () => {
 
   return (
     <Fragment>
-      {(filterListToShow as Array<Movie | People>).map((data) => {
-        if (filterType === 'MOVIE') {
-          return <MoviesMatch key={data.url} title={(data as Movie).title} />;
-        } else {
-          return <PeopleMatch key={data.url} name={(data as People).name} />;
-        }
-      })}
       {totalCount !== shownCount ? (
-        <button className='SearchButton-Disabled' onClick={loadMoreHandler}>
-          <span className='LOADMORE'>LOAD MORE</span>
-        </button>
+        <div className='MatchesList'>
+          {(filterListToShow as Array<Movie | People>).map((data) => {
+            if (filterType === 'MOVIE') {
+              return (
+                <MoviesMatch key={data.url} title={(data as Movie).title} />
+              );
+            } else {
+              return (
+                <PeopleMatch key={data.url} name={(data as People).name} />
+              );
+            }
+          })}
+        </div>
+      ) : (
+        <div className='MatchesLists'>
+          {(filterListToShow as Array<Movie | People>).map((data) => {
+            if (filterType === 'MOVIE') {
+              return (
+                <MoviesMatch key={data.url} title={(data as Movie).title} />
+              );
+            } else {
+              return (
+                <PeopleMatch key={data.url} name={(data as People).name} />
+              );
+            }
+          })}
+        </div>
+      )}
+
+      {totalCount !== shownCount ? (
+        <div className='LoadMoreButton'>
+          <button className='LoadMore' onClick={loadMoreHandler}>
+            <span className='LOADMORE'>LOAD MORE</span>
+          </button>
+        </div>
       ) : null}
-      {/* <div className='divider' />
-      <p className='There-are-zero-matches-Use-the-form-to-search-for'>
-        There are zero matches.
-        <br /> Use the form to search for People or Movies.
-  </p>*/}{' '}
     </Fragment>
   );
 };

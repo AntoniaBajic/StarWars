@@ -18,14 +18,17 @@ const MovieDetail: React.FC = () => {
     fetchMovieData();
   }, [id]);
   return (
-    <div className='movies'>
-      Movie Details
+    <div className='About'>
       <div className='MatchesBG'>
-        <div>Opening crawl:{movie?.opening_crawl}</div>
-        <div>Title:{movie?.title}</div>
+        <div>
+          Opening crawl:<span className='data'> {movie?.opening_crawl}</span>
+        </div>
+        <div className='movieTitle'>
+          Title:<span className='data'> {movie?.title}</span>
+        </div>
       </div>
-      <Link to='/' className='button button-dark'>
-        BACK TO SEARCH
+      <Link to='/' className='SearchBackButton'>
+        <span className='SEARCH-BACK'>BACK TO SEARCH</span>
       </Link>
     </div>
   );

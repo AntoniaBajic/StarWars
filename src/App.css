@@ -243,7 +243,8 @@ a {
 a:hover {
   color: #0ab463;
 }
-.MatchesList {
+
+.MatchesLists {
   display: flex;
   flex-direction: row;
   padding-left: 2rem;
@@ -256,8 +257,6 @@ a:hover {
   letter-spacing: normal;
   color: #000000;
   justify-content: space-between;
-}
-.MatchesLists {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding-left: 2rem;
@@ -374,6 +373,19 @@ a:hover {
   letter-spacing: normal;
   color: #383838;
 }
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .MatchesLists {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-device-width: 900px) {
+  .MatchesLists {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 700px) {
   .SearchListArea {
     grid-template-columns: 1fr;
@@ -388,10 +400,7 @@ a:hover {
   body {
     overflow-x: hidden;
   }
-  .MatchesList {
-    flex-direction: column;
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .MatchesLists {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -412,36 +421,61 @@ a:hover {
   }
 }
 /* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
-  /* some CSS here */
+@media screen and (max-device-width: 480px) {
+  .SearchListArea {
+    padding-left: 0rem;
+  }
+
+  .SearchContainer {
+    margin-left: 0;
+    width: 380px;
+    padding-left: 1.2rem;
+  }
+
+  .MatchesBG {
+    grid-template-rows: 1fr;
+    height: 400px;
+    width: 250px;
+  }
+
+  .movieTitle {
+    text-align: start;
+  }
+  .LoadMoreButton {
+    padding-left: 2rem;
+  }
 }
 
-/* #### Mobile Phones Landscape #### */
-@media screen and (max-device-width: 640px) and (orientation: landscape) {
-  /* some CSS here */
-}
-
-/* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px) {
-  /* some CSS here */
-}
-
-/* #### iPhone 4+ Portrait or Landscape #### */
-@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* some CSS here */
-}
-
-/* #### iPhone 5 Portrait or Landscape #### */
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* some CSS here */
-}
-
-/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
-@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
-  /* some CSS here */
-}
-
-/* #### Tablets Portrait or Landscape #### */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* some CSS here */
+/* #### iPhone 4+ Portrait */
+@media screen and (max-device-width: 320px) {
+  .MatchesLists {
+    grid-template-columns: 1fr;
+  }
+  .MatchesBG {
+    width: 190px;
+    height: 430px;
+    padding: 2rem;
+  }
+  .SearchContainer {
+    width: 280px;
+  }
+  .Rectangle {
+    width: 255px;
+  }
+  .SearchButton-Disabled {
+    width: 255px;
+  }
+  .MatchesBG {
+    width: 225px;
+  }
+  .AboutPeople {
+    height: 280px;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .SearchBackButton {
+    width: 200px;
+  }
 }

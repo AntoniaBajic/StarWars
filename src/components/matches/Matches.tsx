@@ -21,35 +21,15 @@ const Matches: React.FC = () => {
 
   return (
     <Fragment>
-      {totalCount !== shownCount ? (
-        <div className='MatchesList'>
-          {(filterListToShow as Array<Movie | People>).map((data) => {
-            if (filterType === 'MOVIE') {
-              return (
-                <MoviesMatch key={data.url} title={(data as Movie).title} />
-              );
-            } else {
-              return (
-                <PeopleMatch key={data.url} name={(data as People).name} />
-              );
-            }
-          })}
-        </div>
-      ) : (
-        <div className='MatchesLists'>
-          {(filterListToShow as Array<Movie | People>).map((data) => {
-            if (filterType === 'MOVIE') {
-              return (
-                <MoviesMatch key={data.url} title={(data as Movie).title} />
-              );
-            } else {
-              return (
-                <PeopleMatch key={data.url} name={(data as People).name} />
-              );
-            }
-          })}
-        </div>
-      )}
+      <div className='MatchesLists'>
+        {(filterListToShow as Array<Movie | People>).map((data) => {
+          if (filterType === 'MOVIE') {
+            return <MoviesMatch key={data.url} title={(data as Movie).title} />;
+          } else {
+            return <PeopleMatch key={data.url} name={(data as People).name} />;
+          }
+        })}
+      </div>
 
       {totalCount !== shownCount ? (
         <div className='LoadMoreButton'>

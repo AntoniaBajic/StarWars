@@ -1,5 +1,6 @@
 # Star Wars
 
+Responsive web application developed using TypeScript, React.
 
 
 ### Install dependencies:
